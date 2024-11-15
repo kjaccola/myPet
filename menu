@@ -1,0 +1,50 @@
+from pet import Pet
+
+def stats(my_pet):
+  print(f'Happiness: {my_pet.happy}')
+  print(f'Hunger: {my_pet.hunger}')
+  print(f'Health: {my_pet.health}')
+
+def menu():
+  print('1) Pet')
+  print('2) Walk')
+  print('3) Feed')
+  print('4) Cage')
+  user_choice = int(input('What would you like to do?: '))
+  return user_choice
+
+
+def main():
+  new_pet = Pet(input('Give your new pet a name. '))
+  print(f'This is your new pet, {new_pet.name}.')
+  while True:
+    stats(new_pet)
+    choice = menu()
+
+    if choice == 1:
+      new_pet.pet()
+      print(f'You pet {new_pet.name}')
+
+    if choice == 2:
+      new_pet.walk()
+      print(f'You took {new_pet.name}')
+
+    if choice == 3:
+      new_pet.feed()
+
+    if choice == 4:
+      new_pet.cage()
+
+main()
+
+
+
+    
+
+
+
+    
+
+
+
+
