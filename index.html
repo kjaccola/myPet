@@ -1,0 +1,34 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Tamagotchi Pet</title>
+</head>
+<body>
+    <h1>Meet {{ pet.name }}</h1>
+    <p>Hunger: <span id="hunger">{{ pet.hunger }}</span></p>
+    <p>Happiness: <span id="happiness">{{ pet.happiness }}</span></p>
+
+    <button onclick="feed()">Feed</button>
+    <button onclick="play()">Play</button>
+
+    <script>
+        function updatePetStatus(data) {
+            document.getElementById('hunger').textContent = data.hunger;
+            document.getElementById('happiness').textContent = data.happiness;
+        }
+
+        function feed() {
+            fetch('/feed', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => updatePetStatus(data));
+        }
+
+        function play() {
+            fetch('/play', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => updatePetStatus(data));
+        }
+    </script>
+</body>
+</html>
